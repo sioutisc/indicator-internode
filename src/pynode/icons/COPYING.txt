@@ -1,0 +1,3 @@
+The orange.svg icon in this folder has been copied from the nodeutil project https://github.com/AntiSol/nodeutil by Dale Maggee and others published under a BSD license.
+
+It has been renamed from internode.svg to orange.svg. The other icons are the same except for the colour attribute.
