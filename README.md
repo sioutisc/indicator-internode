@@ -3,6 +3,11 @@ indicator-internode
 
 Ubuntu unity indicator to monitor internet usage for the Internode ISP
 
+Latest release
+==============
+
+https://github.com/sioutisc/indicator-internode/archive/v12.10.1.zip
+
 Installation instructions
 =========================
 
