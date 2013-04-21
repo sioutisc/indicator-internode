@@ -1,0 +1,2 @@
+recursive-include src/pynode/icons *.svg
+include easy-install.sh

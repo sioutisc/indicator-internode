@@ -1,8 +1,3 @@
-indicator-internode
-===================
-
-Ubuntu unity indicator to monitor internet usage for the Internode ISP
-
 Installation instructions
 =========================
 
@@ -16,7 +11,7 @@ Installation instructions
 
 you can now delete the download and extracted files
 
-NOTE: The easy_install.sh script simply executes the above commands. Conversely, the easy_uninstall.sh script deletes installed files from their default locations
+NOTE: The easy_install.sh script simply the above commands. The easy_uninstall.sh script deletes the installed files from the default locations
 
 Running the application
 =======================
@@ -37,8 +32,4 @@ Running on startup
    Comment: Internode usage indicator 
 5. Click "Add" button
 
-This application will now automatically start when the computer is rebooted
-
-NOTE: This application uses the Gnome Keyring to securely store passwords. This works best when using the login screen on startup (ie. entering a username/password to log into your system) because that also unlocks the keyring. When using the "auto-login" feature your system will boot straight into the desktop without unlocking the keyring. This application will then trigger an unlock of the keyring and you will immediately get (maybe annoyingly) a password dialog box every time you log in.
-
-
+The application will now automatically start when the computer is rebooted
