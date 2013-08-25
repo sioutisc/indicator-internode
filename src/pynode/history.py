@@ -39,10 +39,10 @@ def monthly(app,credentials,service):
 	month_data = {}
 	for day in history_data:
 		try:
-			month_data[day["day"][:7]] = month_data[day["day"][:7]] + int(float(day["used"])/1000000000)
+			month_data[day["day"][:7]] = month_data[day["day"][:7]] + float(day["used"])
 		except KeyError:
-			month_data[day["day"][:7]] = int(float(day["used"])/1000000000)
-	month_data_sorted = sorted((k,v,k) for (k,v) in month_data.items())
+			month_data[day["day"][:7]] = float(day["used"])
+	month_data_sorted = sorted((k,int(v/1000000000),k) for (k,v) in month_data.items())
 	barchart("Monthly Internet Usage (GB)",month_data_sorted)
 
 
