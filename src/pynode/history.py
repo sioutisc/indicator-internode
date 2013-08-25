@@ -27,20 +27,23 @@ from pygtk_chart import bar_chart
 import credentials
 import nodeapi
 
-def month(app,credentials,service):
-	h = nodeapi.history(app,credentials,service)
-	#create a data item 
-	data = []
-	for i in h[-31:]:
-		day = i["day"]
-		used = int(float(i["used"])/1000000)
-		data.append((day,used,day))
-	barchart("Internet Usage Last 31 Days (MB)",data)
+def daily(app,credentials,service):
+	history_data = nodeapi.history(app,credentials,service)
+	chart_data = []
+	for day in history_data[-31:]:
+		chart_data.append((day["day"],int(float(day["used"])/1000000),day["day"]))
+	barchart("Internet Usage Last 31 Days (MB)",chart_data)
 
-def year(app,credentials,service):
-	h = nodeapi.history(c,s)
-	#create a data item 
-	barchart("Monthly Internet Usage (GB)",data)
+def monthly(app,credentials,service):
+	history_data = nodeapi.history(app,credentials,service)
+	month_data = {}
+	for day in history_data:
+		try:
+			month_data[day["day"][:7]] = month_data[day["day"][:7]] + int(float(day["used"])/1000000000)
+		except KeyError:
+			month_data[day["day"][:7]] = int(float(day["used"])/1000000000)
+	month_data_sorted = sorted((k,v,k) for (k,v) in month_data.items())
+	barchart("Monthly Internet Usage (GB)",month_data_sorted)
 
 
 def barchart(title,data):
@@ -64,6 +67,6 @@ def barchart(title,data):
 if __name__ == "__main__":
 	c = credentials.load()
 	s = nodeapi.services("test",c)
-	month("test",c,s[0])
+	monthly("test",c,s[0])
 	gtk.main()
 
