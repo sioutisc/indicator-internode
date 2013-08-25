@@ -24,6 +24,25 @@ import pygtk
 import pygtk_chart
 from pygtk_chart import bar_chart
 
+import credentials
+import nodeapi
+
+def month(app,credentials,service):
+	h = nodeapi.history(app,credentials,service)
+	#create a data item 
+	data = []
+	for i in h[-31:]:
+		day = i["day"]
+		used = int(float(i["used"])/1000000)
+		data.append((day,used,day))
+	barchart("Internet Usage Last 31 Days (MB)",data)
+
+def year(app,credentials,service):
+	h = nodeapi.history(c,s)
+	#create a data item 
+	barchart("Monthly Internet Usage (GB)",data)
+
+
 def barchart(title,data):
 	barchart = bar_chart.BarChart()
 	barchart.title.set_text(title)
@@ -43,11 +62,8 @@ def barchart(title,data):
 	window.show_all()
 
 if __name__ == "__main__":
-        data = [('wheat', 276, 'Wheat'),
-                     ('oat', 52, 'Oat'),
-                     ('white', 652, 'White'),
-                     ('sour', 65, 'Sourdough'),
-                     ('raisin', 120, 'Raisin'),
-                    ]
-        barchart('Loaves of Bread Made',data)
-        gtk.main()
+	c = credentials.load()
+	s = nodeapi.services("test",c)
+	month("test",c,s[0])
+	gtk.main()
+
