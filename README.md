@@ -24,7 +24,7 @@ Installation instructions
 
 you can now delete the download and extracted files
 
-NOTE: The easy_install.sh script simply executes the above commands. Conversely, the easy_uninstall.sh script deletes installed files from their default locations
+NOTE: The simple_install.sh script simply executes the above commands. Conversely, the simple_uninstall.sh script deletes installed files from their default locations
 
 Running the application
 =======================
