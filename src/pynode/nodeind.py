@@ -28,6 +28,7 @@ from calendar import monthrange
 from indicatorbase import *
 import nodeapi
 import credentials
+import history
 
 from gnomekeyring import IOError as GK_IOError
 from gnomekeyring import CancelledError as GK_CancelledError
@@ -73,6 +74,8 @@ class NodeInd(IndicatorBase):
 		self.service = None
 		self.usage = None
 		self.deadline = datetime.datetime.now()
+		self.history_data = None
+		self.history_deadline = self.deadline
 		update_interval = INTERVALS[INTERVAL_1HR]
 		self.init_menu()
 		self.init_interval()
@@ -104,6 +107,9 @@ class NodeInd(IndicatorBase):
 		self.interval_options.append(self.add_chk_menuitem(submenu,INTERVAL_1HR,True))
 		self.interval_options.append(self.add_chk_menuitem(submenu,INTERVAL_12HR,False))
 		self.add_btn_menuitem(menu,"Update Now")
+		history = self.add_submenu(menu,"History")
+		self.add_btn_menuitem(history,"Month")
+		self.add_btn_menuitem(history,"Year")
 		self.add_btn_menuitem(menu,"Account")
 
 	def init_interval(self):
@@ -140,6 +146,16 @@ class NodeInd(IndicatorBase):
 							credentials.trigger_unlock()
 						except GK_CancelledError, e:
 							pass
+			return
+
+		if selection == "Month":
+			self.update_history()
+			history.month(APP_ID,self.history_data)
+			return
+
+		if selection == "Year":
+			self.update_history()
+			history.year(APP_ID,self.history_data)
 			return
 
 	def on_chk_menuitem_toggled(self,menuitem,selection):
@@ -282,6 +298,19 @@ class NodeInd(IndicatorBase):
 			self.set_icn_main(icon)
 		else:
 			self.set_icn_main(ICON_DEFAULT)
+
+	def update_history(self):
+		# history is only updated when usage details deadline changes
+		if self.history_data != None and self.history_deadline == self.deadline:
+			self.logger.info("using current history details")
+			return
+		try:
+			self.logger.debug("history details get")
+			self.history_data = nodeapi.history(APP_ID_VER,self.credentials,self.service)
+			self.history_deadline = self.deadline
+			self.logger.info("history details retrieved")
+		except Exception, e:
+			self.logger.error(str(e))
 
 	def reset_ui(self,lblMain="OFF"):
 		self.set_lbl_main(lblMain)
