@@ -29,9 +29,11 @@ NOTE: The simple_install.sh script simply executes the above commands. Conversel
 Running the application
 =======================
 
-open a terminal and run the following command
+Just open a terminal and run the following command
 
 > indicator-internode
+
+NOTE: You can also run the application without installing it, simply execute the "indicator-internode" command from within the "src" directory.
 
 Running on startup
 ==================
