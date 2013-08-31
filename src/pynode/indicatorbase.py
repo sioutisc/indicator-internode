@@ -70,6 +70,11 @@ class IndicatorBase(appi.Indicator):
 	def on_chk_menuitem_toggled(self,menuitem,selection):
 		self.set_config(selection, str(menuitem.get_active()))
 
+	def add_separator(self,menu):
+		separator = gtk.SeparatorMenuItem()
+		separator.show()
+		menu.append(separator)
+
 	def add_lbl_menuitem(self,menu,lblid,lbltxt):
 		item = gtk.MenuItem()
 		lbl = gtk.Label(lbltxt)

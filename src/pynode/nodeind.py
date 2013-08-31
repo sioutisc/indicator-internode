@@ -99,6 +99,7 @@ class NodeInd(IndicatorBase):
 		menu = self.get_root_menu()
 		self.add_lbl_menuitem(menu,"data", "----------")
 		self.add_lbl_menuitem(menu,"budget", "----------")
+		self.add_separator(menu)
 		self.add_chk_menuitem(menu,"Colour",False)
 		submenu = self.add_submenu(menu,"Interval")
 		self.interval_options = []
@@ -106,10 +107,11 @@ class NodeInd(IndicatorBase):
 		self.interval_options.append(self.add_chk_menuitem(submenu,INTERVAL_30M,False))
 		self.interval_options.append(self.add_chk_menuitem(submenu,INTERVAL_1HR,True))
 		self.interval_options.append(self.add_chk_menuitem(submenu,INTERVAL_12HR,False))
-		self.add_btn_menuitem(menu,"Update Now")
 		history = self.add_submenu(menu,"History")
 		self.add_btn_menuitem(history,"Month")
 		self.add_btn_menuitem(history,"Year")
+		self.add_separator(menu)
+		self.add_btn_menuitem(menu,"Update Now")
 		self.add_btn_menuitem(menu,"Account")
 
 	def init_interval(self):
