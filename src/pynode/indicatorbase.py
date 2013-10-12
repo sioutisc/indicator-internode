@@ -30,10 +30,12 @@ class IndicatorBase(appi.Indicator):
 		self.gc = gconf.client_get_default()
 		self.ind.set_status (appi.STATUS_ACTIVE)
 		self.menu = gtk.Menu()
-		self.ind.set_menu(self.menu)
 		self.labels = {}
 		self.cfgpath =  GCONF_ROOT + "/" + appid + "/"
-		
+
+	def finalize_menu(self):
+		self.ind.set_menu(self.menu)
+
 	def get_root_menu(self):
 		return self.menu
 		

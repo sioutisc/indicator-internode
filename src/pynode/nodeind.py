@@ -78,6 +78,7 @@ class NodeInd(IndicatorBase):
 		self.history_deadline = self.deadline
 		update_interval = INTERVALS[INTERVAL_1HR]
 		self.init_menu()
+		self.finalize_menu()
 		self.init_interval()
 		#reset deadline for first update
 		self.deadline = datetime.datetime.now()
