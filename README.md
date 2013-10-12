@@ -11,10 +11,20 @@ https://github.com/sioutisc/indicator-internode/archive/v13.04.2.zip
 The version numbers follow the particular ubuntu release on which the application
 was tested. It may still work with a newer release if the underlying API is compatible.
 
+Dependencies
+============
+
+Starting with ubuntu 13.10 the python bindings for appindicator are not installed
+by default. It is necessary for people to manually install "python-appindicator"
+package using the software center before this application with work.
+
 Installation instructions
 =========================
 
-1. indicator-internode requires python setuptools, to install it run the following command in a terminal
+NOTE: You can also run the application without installing it, simply execute the "indicator-internode" command from within the "src" directory.
+
+1. indicator-internode uses the setuptools library to automate installation. This library needs to be
+manually installed using the following command in a terminal
 
 > sudo apt-get install python-setuptools
 
@@ -32,8 +42,6 @@ Running the application
 Just open a terminal and run the following command
 
 > indicator-internode
-
-NOTE: You can also run the application without installing it, simply execute the "indicator-internode" command from within the "src" directory.
 
 Running on startup
 ==================
