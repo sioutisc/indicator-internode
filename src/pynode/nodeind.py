@@ -96,24 +96,23 @@ class NodeInd(IndicatorBase):
 		
 	def init_menu(self):
 		self.set_lbl_main("OFF")
-		self.suppress_toggles = False		
-		menu = self.get_root_menu()
-		self.add_lbl_menuitem(menu,"data", "----------")
-		self.add_lbl_menuitem(menu,"budget", "----------")
-		self.add_separator(menu)
-		self.add_chk_menuitem(menu,"Colour",False)
-		submenu = self.add_submenu(menu,"Interval")
+		self.suppress_toggles = False
+		self.add_lbl_menuitem("root","data", "----------")
+		self.add_lbl_menuitem("root","budget", "----------")
+		self.add_separator("root")
+		self.add_chk_menuitem("root","Colour",False)
+		self.add_submenu("root","Interval")
 		self.interval_options = []
-		self.interval_options.append(self.add_chk_menuitem(submenu,INTERVAL_15M,False))
-		self.interval_options.append(self.add_chk_menuitem(submenu,INTERVAL_30M,False))
-		self.interval_options.append(self.add_chk_menuitem(submenu,INTERVAL_1HR,True))
-		self.interval_options.append(self.add_chk_menuitem(submenu,INTERVAL_12HR,False))
-		history = self.add_submenu(menu,"History")
-		self.add_btn_menuitem(history,"Month")
-		self.add_btn_menuitem(history,"Year")
-		self.add_separator(menu)
-		self.add_btn_menuitem(menu,"Update Now")
-		self.add_btn_menuitem(menu,"Account")
+		self.interval_options.append(self.add_chk_menuitem("Interval",INTERVAL_15M,False))
+		self.interval_options.append(self.add_chk_menuitem("Interval",INTERVAL_30M,False))
+		self.interval_options.append(self.add_chk_menuitem("Interval",INTERVAL_1HR,True))
+		self.interval_options.append(self.add_chk_menuitem("Interval",INTERVAL_12HR,False))
+		history = self.add_submenu("root","History")
+		self.add_btn_menuitem("History","Month")
+		self.add_btn_menuitem("History","Year")
+		self.add_separator("root")
+		self.add_btn_menuitem("root","Update Now")
+		self.add_btn_menuitem("root","Account")
 
 	def init_interval(self):
 		for item in self.interval_options:
