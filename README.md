@@ -6,7 +6,7 @@ Ubuntu unity indicator to monitor internet usage for the Internode ISP
 Latest release
 ==============
 
-https://github.com/sioutisc/indicator-internode/archive/v14.04.2.zip
+https://github.com/sioutisc/indicator-internode/archive/v16.04.1.zip
 
 The version numbers follow the particular ubuntu release on which the application
 was tested. It may still work with a newer release if the underlying API is compatible.
@@ -14,14 +14,19 @@ was tested. It may still work with a newer release if the underlying API is comp
 Installation instructions
 =========================
 
-1. Starting with ubuntu 13.10 the python bindings for appindicator are not installed by default.
-It is necessary to manually install "python-appindicator" as follows:
+1. Starting with ubuntu 16.04 LTS the python bindings for the following python bindings are not installed by default.
+
+- python-appindicator
+- python-gconf
+- python-gtk2
+- python-gnomekeyring
+
+It is necessary to manually install each of them, for example:
 
 > sudo apt-get install python-appindicator
 
 2. The application can run without installing it, simply execute the "indicator-internode"
-command from within the "src" directory. It can also be installed using the setuptools library
-which needs to be installed first.
+command from within the "src" directory. The setuptools python library can also be used to install the application, setuptools needs to be installed first.
 
 > sudo apt-get install python-setuptools
 
