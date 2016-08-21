@@ -7,9 +7,9 @@ setup(
 	author		= 'Christos Sioutis',
 	author_email	= 'christos.sioutis@gmail.com',
 	url		= 'TBA',
-	packages	= ['pynode'],
-	package_dir	= {'pynode':'src/pynode'},
-	package_data	= {'pynode':['icons/*.svg']},
+	packages	= ['pynode', 'pygtk_chart'],
+	package_dir	= {'pynode':'src/pynode', 'pygtk_chart':'src/pygtk_chart'},
+	package_data	= {'pynode':['icons/*.svg'], 'pygtk_chart':['data/tango.color']},
 	include_package_data = True,
 	scripts		= ['src/indicator-internode'],
 )
