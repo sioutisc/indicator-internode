@@ -6,7 +6,7 @@ Ubuntu unity indicator to monitor internet usage for the Internode ISP
 Latest release
 ==============
 
-https://github.com/sioutisc/indicator-internode/archive/v16.04.1.zip
+https://github.com/sioutisc/indicator-internode/archive/v16.04.2.zip
 
 The version numbers follow the particular ubuntu release on which the application
 was tested. It may still work with a newer release if the underlying API is compatible.
